@@ -41,9 +41,13 @@ function handlerImgClick(evt) {
 
   instance.show();
 
-  container.addEventListener("keydown", (evt) => {
-    if (evt.code === "Escape") {
+  const modalClose = (eventEsc,) => {
+    if(eventEsc.key === "Escape"){
       instance.close();
+  
+      document.removeEventListener("keydown", modalClose);
     }
-  });
-}
+  }
+  document.addEventListener("keydown", modalClose);
+  };
+  
